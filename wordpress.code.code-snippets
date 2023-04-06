@@ -52,13 +52,12 @@
     // よく使うテンプレートタグたち
     // ####################################################
     
-    // 【home】home_uri（トップページのリンク取得）
+		// 【home】home_uri（トップページのリンク取得）
     "トップページのリンク取得（home_uri）": {
     "prefix": "home",
     "body": [
     "<?php echo esc_url( home_url( '/' ) ); ?>"
     ]},
-    
 
     // 【cnt】the_content（記事本文の表示）
     "本文の表示（the_content）": {
@@ -203,7 +202,7 @@
     "),",
     ]},
     
-    // 【bdc】bode_class（bodyタグにclass名つける）
+    // 【bdc】body_class（bodyタグにclass名つける）
     "odyタグにclass名つける（body_class）": {
     "prefix": "bdc",
     "body": [
@@ -275,7 +274,7 @@
     "prefix": "len",
     "body": [
     "function custom_excerpt_length( \\$length ) {",
-    "    return ${1:\\$ここに文字数};",
+    "    return ${1:\\$lengh};",
     "}",
     "add_filter('excerpt_length', 'custom_excerpt_length');"
     ]},
@@ -284,10 +283,10 @@
     "抜粋時の[...]を書き換え（excerpt_more）": {
     "prefix": "more",
     "body": [
-    "function custom_excerpt_more( \\$excerpt ) {",
-    "    return '<a href=\"'. get_permalink(get_the_ID()) . '\">' . '${1:(続きを読む)}' . '</a>';",
+    "function tuzuki_excerpt_more(\\$post) {",
+    "    return '<a href=\"'. get_permalink(\\$post->ID) . '\">' . '${1:(続きを読む)}' . '</a>';",
     "}",
-    "add_filter('excerpt_more', 'custom_excerpt_more');"
+    "add_filter('excerpt_more', 'tuzuki_excerpt_more');"
     ]},
 
     // 【wdel】ウィジェット（利用できるウィジェット）の削除
